@@ -9,5 +9,5 @@ while ($bottles > 0) {
     echo "take one down pass it around {$bottles} " .$amount." of beer on the wall\n";
 
 }
-echo "No more bottles of beer on the wall time to go to the\n";
+echo "No more bottles of beer on the wall time to go to the store\n";
 goto start;
