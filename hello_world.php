@@ -1,4 +1,4 @@
 <?php
 $firstName = 'Alex';
 $lastName = 'Garrido';
-echo "Hello my name is " . $firstName . " " . $lastName;
+echo "Hello my name is $firstName $lastName";
