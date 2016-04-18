@@ -10,4 +10,4 @@ if (!is_null($index) || !is_null($end) || !is_null($increment)) {
         echo $index.PHP_EOL;
     }
     
-}
+} 
