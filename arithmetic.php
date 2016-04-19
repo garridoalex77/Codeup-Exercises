@@ -4,20 +4,25 @@ function add($a, $b)
 {
     return $a + $b;
 }
-echo add(42, 21).PHP_EOL;
 function subtract($a, $b)
 {
     return $a - $b;
 }
-echo subtract(65, 33).PHP_EOL;
 function multiply($a, $b)
 {
    return $a * $b;
 }
-echo multiply(55, 5).PHP_EOL;
 function divide($a, $b)
 {
     return $a / $b;
 }
-echo divide(99, 33).PHP_EOL;
+function modulus($a, $b)
+{
+    return $a % $b;
+}
 // Add code to test your functions here
+echo add(42, 21).PHP_EOL;
+echo subtract(65, 33).PHP_EOL;
+echo divide(99, 33).PHP_EOL;
+echo multiply(55, 5).PHP_EOL;
+echo modulus(55, 7).PHP_EOL;
