@@ -1,11 +1,15 @@
 <?php
 
+function throwErrorMessage($a, $b) {
+    return "Error both arguments must be numbers, value \$a : {$a}, \$b : {$b}";
+}
+
 function add($a, $b)
 {
     if (is_numeric($a) && is_numeric($b)) {
         return $a + $b;
     } else {
-        return "Error both arguments must be numbers, value \$a : {$a}, \$b : {$b}";
+         echo throwErrorMessage($a, $b);
     }
 }
 function subtract($a, $b)
@@ -13,7 +17,7 @@ function subtract($a, $b)
     if (is_numeric($a) && is_numeric($b)) {
         return $a - $b;
     } else {
-        return "Error both arguments must be numbers, value \$a : {$a}, \$b : {$b}";
+       echo throwErrorMessage($a, $b);
     }
 }
 function multiply($a, $b)
@@ -21,7 +25,7 @@ function multiply($a, $b)
     if (is_numeric($a) && is_numeric($b)) {
         return $a * $b;
     } else {
-        return "Error both arguments must be numbers, value \$a : {$a}, \$b : {$b}";
+       echo throwErrorMessage($a, $b);
     }
 }
 function divide($a, $b)
@@ -31,7 +35,7 @@ function divide($a, $b)
     } elseif (is_numeric($a) && is_numeric($b)) {
         return $a / $b;
     } else {
-        return "Error both arguments must be numbers, value \$a : {$a}, \$b : {$b}";
+       echo throwErrorMessage($a, $b);
     }
 }
 function modulus($a, $b)
@@ -39,7 +43,7 @@ function modulus($a, $b)
     if (is_numeric($a) && is_numeric($b)) {
         return $a % $b;
     } else {
-        return "Error both arguments must be numbers, value \$a : {$a}, \$b : {$b}";
+       echo throwErrorMessage($a, $b);
     }
 }
 // Add code to test your functions here
