@@ -2,13 +2,20 @@
 
 // TODO: Create your inspect() function here
 function inspect($a) {
-    switch (is_scalar($a)) {
-        case true:
-        return " {$a} is " . gettype($a);
-        break;
-        case false:
-        return print_r($a) . " is an " . gettype($a);
-        break;
+    if ($a === true) {
+        return " Bool value is true";
+    } elseif ($a === false) {
+        return " Bool value is false";
+    } elseif ($a === null) {
+        return " Value is null";
+    } elseif (is_scalar($a) && !empty($a)) {
+        return " {$a} type: " . gettype($a);
+    } elseif (is_scalar($a) && empty($a)) {
+        return " is an empty string";
+    } elseif (is_array($a) && !empty($a)) {
+        return " type: " . gettype($a);
+    } elseif (is_array($a) && empty($a)) {
+        return " is an empty array";
     }
 }
 
@@ -37,15 +44,15 @@ echo 'Inspecting $num4:' . inspect($num4) . PHP_EOL;
 
 echo 'Inspecting $null:' . inspect($null) . PHP_EOL;
 
-echo 'Inspecting $bool1' . inspect($bool1) . PHP_EOL;
+echo 'Inspecting $bool1:' . inspect($bool1) . PHP_EOL;
 
-echo 'Inspecting $bool2' . inspect($bool2) . PHP_EOL;
+echo 'Inspecting $bool2:' . inspect($bool2) . PHP_EOL;
 
-echo 'Inspecting $string1' . inspect($string1) . PHP_EOL;
+echo 'Inspecting $string1:' . inspect($string1) . PHP_EOL;
 
-echo 'Inspecting $string2' . inspect($string2) . PHP_EOL;
+echo 'Inspecting $string2:' . inspect($string2) . PHP_EOL;
 
-echo 'Inspecting $array1' . inspect($array1) . PHP_EOL;
+echo 'Inspecting $array1:' . inspect($array1) . PHP_EOL;
 
-echo 'Inspecting $array2' . inspect($array2) . PHP_EOL;
+echo 'Inspecting $array2:' . inspect($array2) . PHP_EOL;
 
