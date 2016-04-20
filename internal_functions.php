@@ -8,10 +8,10 @@ function inspect($a) {
         return " Bool value is false";
     } elseif ($a === null) {
         return " Value is null";
-    } elseif (is_scalar($a) && !empty($a)) {
-        return " {$a} type: " . gettype($a);
-    } elseif (is_scalar($a) && empty($a)) {
+    } elseif (is_scalar($a) && empty($a) && !is_numeric($a)) {
         return " is an empty string";
+    } elseif (is_scalar($a)) {
+        return " {$a} type: " . gettype($a);
     } elseif (is_array($a) && !empty($a)) {
         return " type: " . gettype($a);
     } elseif (is_array($a) && empty($a)) {
