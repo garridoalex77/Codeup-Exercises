@@ -44,5 +44,12 @@ $companies = [
         'Jean-Louis Gassée'
     ]
 ];
+
 ksort($companies);
+
+foreach ($companies as $key => $value) {
+    sort($value);
+    $companies[$key]=$value;
+}
+arsort($companies);
 print_r($companies);
