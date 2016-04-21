@@ -4,23 +4,25 @@ $names = ['Tina', 'Dana', 'Mike', 'Amy', 'Adam'];
 
 $compare = ['Tina', 'Dean', 'Mel', 'Amy', 'Michael'];
 
-if (array_search('Bob', $names) !== false) {
-    echo "True\n";
-} else {
-    echo "False\n";
-}
-
-if (array_search('Tina', $names) !== false) {
-    echo "True\n";
-} else {
-    echo "False\n";
-}
-
-$i = 0;
-foreach ($names as $index => $name) {
-    if ($name == $compare[$index]) {
-        $i++;
-        echo "{$name} is in both arrays\n";
+function search ($findName, $array) {
+    if (array_search($findName, $array) !== false) {
+        return True;
+    } else {
+        return False;
     }
+    
 }
-        echo "{$i} matches between arrays\n";
+
+function compareArrays($array1, $array2) {
+    $i = 0;
+    foreach ($array1 as $value) {
+        if (search($value, $array2)) {
+            $i++;
+        }
+    }
+        return $i." Similar items".PHP_EOL;
+}
+
+echo "Search for Tina results " . search('Tina', $names).PHP_EOL;
+echo "Search for Bob results " . search('Bob', $names).PHP_EOL;
+echo compareArrays($names, $compare);
