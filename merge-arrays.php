@@ -1,6 +1,6 @@
 <?php
 
-$names = ['Tina', 'Dana', 'Mike', 'Amy', 'Adam'];
+$names = ['Tina', 'Dana', 'Mike', 'Amy', 'Adam',];
 
 $compare = ['Tina', 'Dean', 'Mel', 'Amy', 'Michael'];
 
@@ -20,23 +20,22 @@ function compareArrays($array1, $array2) {
             $i++;
         }
     }
-        return $i." Similar items".PHP_EOL;
+    return $i." Similar items".PHP_EOL;
 }
 
 function combineArrays($array1, $array2) {
-    foreach ($array1 as $value) {
-        if (!(search($value, $array2))) {
-            array_push($array1, $value);
-            array_pop($array2);
+    $newArray = [];
+    foreach ($array2 as $key => $value) {
+        array_push($newArray, $array1[$key]);
+        if (!(search($value, $array1))) {
+            array_push($newArray, $value);
         }
     }
-            return $array1;
+    return $newArray;
 }
 $result = combineArrays($names, $compare);
 
 print_r($result);
-// print_r($compare);
-
 // echo "Search for Tina results " . search('Tina', $names).PHP_EOL;
 // echo "Search for Bob results " . search('Bob', $names).PHP_EOL;
 // echo compareArrays($names, $compare);

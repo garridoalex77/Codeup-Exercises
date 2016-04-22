@@ -4,18 +4,18 @@
  $physicistsArray = [];
 
 
- function humanizedList($list, $string) {
-    $list = explode(' ', $string);
-    $lastSur = array_pop($list);
-    $lastFore = array_pop($list);
-    array_push($list, "and");
-    array_push($list, $lastFore);
-    array_push($list, $lastSur);
-    $list = implode(" ", $list);
-    return $list;
+ function humanizedList($string, $sort = false) {
+    $list = explode(', ', $string);
+    If ($sort) {
+        sort($list);
+    }
+    var_dump($list);
+    $last = array_pop($list);
+    $list = implode(", ", $list);
+    return $list . ' and ' . $last;
  }
 
- $famousFakePhysicists = humanizedList($physicistsArray, $physicistsString);
+ $famousFakePhysicists = humanizedList($physicistsString, true);
 
 
 
