@@ -13,7 +13,6 @@ function parseContacts($filename) {
             $personalInfo = array();
             $personalInfo["name"] = $data;
         } else {
-            var_dump($data);
             $data = substr($data, 0, 3) . "-" . substr($data, 3, 3) . "-" . substr($data, 6, 4);
             $personalInfo["number"] = $data;
             array_push($contactList, $personalInfo);
