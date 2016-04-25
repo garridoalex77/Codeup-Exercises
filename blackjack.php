@@ -35,13 +35,31 @@ function cardIsAce($card) {
 // face cards are worth 10
 // numeric cards are worth their value
 function getCardValue($card) {
-  // todo
+    $card = substr($card, 0, 1);
+    if ($card == "A") {
+        echo $card = 11;
+    } elseif ($card != "A" && !is_numeric($card)) {
+       echo $card = 10;
+    } else {
+        echo $card = substr($card, 0, 1);
+    }
 }
+// getCardValue($card);
+
 // get total value for a hand of cards
 // don't forget to factor in aces
 // aces can be 1 or 11 (make them 1 if total value is over 21)
 function getHandTotal($hand) {
-  // todo
+    $card = substr($card, 0, 1);
+    if ($card == "A") {
+        if ($hand > 21) {
+            $hand = getCardValue($card) - 10;
+        }
+    } else {
+        $hand = getCardValue($card);
+    } 
+
+  
 }
 // draw a card from the deck into a hand
 // pass by reference (both hand and deck passed in are modified)
