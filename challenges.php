@@ -28,7 +28,7 @@ function sum($n) {
     return $sumOfAll.PHP_EOL;
 }
 
-echo sum(12);
+// echo sum(12);
 
 
 //program to convert a given number to words 1234 = one thousand three hundred and thirty 4
@@ -38,3 +38,23 @@ echo sum(12);
 // }
 
 // echo sayANumber (1234);
+
+//count the digit 0 in a list of numbers
+
+function countZero ($number) {
+    $zeros = 0;
+    $numArray = [];
+    for ($i = 1; $i <= $number ; $i++) { 
+        $list = str_split($i);
+        foreach ($list as $digit) {
+            var_dump($digit);
+            if ($digit == 0) {
+                array_push($numArray, $i);
+            }
+        }
+    }
+    var_dump($numArray);
+
+}
+
+echo countZero(107);
