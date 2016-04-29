@@ -8,25 +8,24 @@ $cards = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
 // card values should be "VALUE SUIT". ex: "7 H"
 // make sure to shuffle the deck before returning it
 function buildDeck($suits, $cards) {
-    $deckList = [];
+    $deck = [];
     foreach ($cards as $card) {
         foreach ($suits as $suit) {
             $thisCard = $card . " " . $suit;
-          array_push($deckList, $thisCard);
-      }
-  }
-  shuffle($deckList);
-  return $deckList;
+          array_push($deck, $thisCard);
+        }
+    }
+    shuffle($deck);
+    return $deck;
 }
-buildDeck($suits, $cards);
+$deck = buildDeck($suits, $cards);
+// buildDeck($suits, $cards);
 // determine if a card is an ace
 // return true for ace, false for anything else
 function cardIsAce($card) {
     if (substr($card, 0, 1) == "A") {
-        echo 'x';
         return true;
     } else {
-        echo 'y';
         return false;
     }
 }
@@ -37,35 +36,36 @@ function cardIsAce($card) {
 function getCardValue($card) {
     $card = substr($card, 0, 1);
     if ($card == "A") {
-        echo $card = 11;
+        $card = 11;
     } elseif ($card != "A" && !is_numeric($card)) {
-       echo $card = 10;
+        $card = 10;
     } else {
-        echo $card = substr($card, 0, 1);
+        $card = (integer) substr($card, 0, 1);
     }
+    return $card;
 }
-// getCardValue($card);
+$cardValue = getCardValue($card);
 
 // get total value for a hand of cards
 // don't forget to factor in aces
 // aces can be 1 or 11 (make them 1 if total value is over 21)
 function getHandTotal($hand) {
-    $card = substr($card, 0, 1);
-    if ($card == "A") {
-        if ($hand > 21) {
-            $hand = getCardValue($card) - 10;
-        }
-    } else {
-        $hand = getCardValue($card);
-    } 
-
-  
+    foreach ($hand as $card) {
+        $cardValue = getCardValue($card);
+        array_shift($hand);
+        array_push($hand, $cardValue);
+    }
+    return $hand;
 }
+getHandTotal($hand);
+
+
 // draw a card from the deck into a hand
 // pass by reference (both hand and deck passed in are modified)
-function drawCard(&$hand, &$deck) {
-  // todo
+function drawCard($hand, $deck) {
+    $hand[] = array_pop($deck);
 }
+drawCard($hand, $deck);
 // print out a hand of cards
 // name is the name of the player
 // hidden is to initially show only first card of hand (for dealer)
@@ -77,7 +77,8 @@ function echoHand($hand, $name, $hidden = false) {
   // todo
 }
 // build the deck of cards
-$deck = buildDeck($suits, $cards);
+// $deck = buildDeck($suits, $cards);
+
 // initialize a dealer and player hand
 $dealer = [];
 $player = [];
