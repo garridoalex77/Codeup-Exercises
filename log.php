@@ -6,18 +6,17 @@ class Log
     public $prefix;
     public function __construct($prefix = "log") 
     {
-       $this->prefix = $prefix;
+        date_default_timezone_set("UTC");
+        $this->prefix = $prefix;
+        $date = date('Y-m-d');
+        $this->fileName = $this->prefix."-{$date}.log";
+        $this->handle = fopen($this->fileName, "a");
     }
 
     public function logMessage($logLevel, $message) 
     {
-        date_default_timezone_set("UTC");
-        $date = date('Y-m-d');
         $time = date('h:i:s');
-        $this->fileName = $this->prefix."-{$date}.log";
-        $handle = fopen($this->fileName, "a");
-        fwrite($handle, "{$date} {$time} {$logLevel} {$message}\n");
-        fclose($handle);
+        fwrite($this->handle, "{$date} {$time} {$logLevel} {$message}\n");
     }
 
     public function logInfo($message) 
@@ -32,6 +31,23 @@ class Log
 
     public function __destruct() 
     {
-
+        fclose($this->handle);
     }
+}
+
+class File 
+{
+    public $handle;
+
+    public function __construct($fileName) 
+    {
+        $this->handle = fopen($fileName, "a");
+    }
+    public function append($text) {
+        fwrite($this->handle, "{$text}\n");
+    }
+    public function close() {
+        fclose($this->handle);
+    }
+
 }
