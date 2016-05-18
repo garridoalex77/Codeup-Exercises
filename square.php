@@ -9,7 +9,7 @@ class Square extends Rectangle {
 
     public function perimeter() 
     {   
-        return "square: " . parent::getheight() * 4;
+        return "square: " . parent::getHeight() * 4;
     }
 
     public function area() 
