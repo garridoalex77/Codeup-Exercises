@@ -1,7 +1,15 @@
 <?php
 
-class Model {
+class Model 
+{
     private $atttributes = [];
+
+    protected static $table;
+
+    public static function getTableName()
+    {
+        return static::$table;
+    }
 
     public function __set($name, $value)
     {
