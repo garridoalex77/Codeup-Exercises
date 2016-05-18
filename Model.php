@@ -4,7 +4,7 @@ class Model
 {
     private $atttributes = [];
 
-    protected static $table;
+    protected static $table = 'model';
 
     public static function getTableName()
     {
