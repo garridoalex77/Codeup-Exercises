@@ -35,9 +35,9 @@ function cardIsAce($card) {
 // numeric cards are worth their value
 function getCardValue($card) {
     $card = substr($card, 0, 1);
-    if ($card == "A") {
+    if (cardIsAce()) {
         $card = 11;
-    } elseif ($card != "A" && !is_numeric($card)) {
+    } elseif (!is_numeric($card)) {
         $card = 10;
     } else {
         $card = (integer) substr($card, 0, 1);

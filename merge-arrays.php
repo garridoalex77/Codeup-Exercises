@@ -1,8 +1,8 @@
 <?php
 
-$names = ['Tina', 'Dana', 'Mike', 'Amy', 'Adam',];
+$names = ['Tina', 'Dana', 'Mike', 'Amy', 'Adam'];
 
-$compare = ['Tina', 'Dean', 'Mel', 'Amy', 'Michael'];
+$compare = ['Tina', 'Dean', 'Mel', 'Amy', 'Michael', 'Bob'];
 
 function search ($findName, $array) {
     if (array_search($findName, $array) !== false) {
@@ -25,9 +25,20 @@ function compareArrays($array1, $array2) {
 
 function combineArrays($array1, $array2) {
     $newArray = [];
-    foreach ($array2 as $key => $value) {
-        array_push($newArray, $array1[$key]);
-        if (!(search($value, $array1))) {
+
+    if (count($array1) > count($array2)) {
+        $bigArray = $array1;
+        $smallArray = $array2;
+    } else {
+        $bigArray = $array2;
+        $smallArray = $array1;
+    }
+
+    foreach ($bigArray as $key => $value) {
+        if (array_key_exists($key, $smallArray)) {
+            array_push($newArray, $smallArray[$key]);
+        }
+        if (!(search($value, $smallArray))) {
             array_push($newArray, $value);
         }
     }

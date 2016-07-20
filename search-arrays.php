@@ -20,7 +20,7 @@ function compareArrays($array1, $array2) {
             $i++;
         }
     }
-        return $i." Similar items".PHP_EOL;
+        return $i . " Similar items".PHP_EOL;
 }
 
 echo "Search for Tina results " . search('Tina', $names).PHP_EOL;

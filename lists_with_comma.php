@@ -16,9 +16,12 @@
  }
 
  $famousFakePhysicists = humanizedList($physicistsString, true);
+var $a = ($c);
 
-
-
+ function add $a {
+     var_dump($c + $c);
+ }
+ add(2);
  // Output sentence
  echo "\nSome of the most famous fictional theoretical physicists are {$famousFakePhysicists}.\n";
 
