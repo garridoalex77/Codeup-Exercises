@@ -1,45 +1,44 @@
-<?php 
-class Log 
+<?php
+class Log
 {
     public $fileName;
     public $handle;
-    public $prefix;
-    public function __construct($prefix = "log") 
+    public $date;
+    public function __construct($prefix = "log")
     {
         date_default_timezone_set("UTC");
-        $this->prefix = $prefix;
-        $date = date('Y-m-d');
-        $this->fileName = $this->prefix."-{$date}.log";
+        $this->date = date('Y-m-d');
+        $this->fileName = $prefix."-{$this->date}.log";
         $this->handle = fopen($this->fileName, "a");
     }
 
-    public function logMessage($logLevel, $message) 
+    public function logMessage($logLevel, $message)
     {
         $time = date('h:i:s');
-        fwrite($this->handle, "{$date} {$time} {$logLevel} {$message}\n");
+        fwrite($this->handle, "{$this->date} {$time} {$logLevel} {$message}\n");
     }
 
-    public function logInfo($message) 
+    public function logInfo($message)
     {
         $this->logMessage("INFO", $message);
     }
 
-    public function logError($message) 
+    public function logError($message)
     {
         $this->logMessage("ERROR", $message);
     }
 
-    public function __destruct() 
+    public function __destruct()
     {
         fclose($this->handle);
     }
 }
 
-class File 
+class File
 {
     public $handle;
 
-    public function __construct($fileName) 
+    public function __construct($fileName)
     {
         $this->handle = fopen($fileName, "a");
     }
